@@ -24,8 +24,16 @@ sudo service mysql restart
 
 sudo service apache2 restart
 
-echo "Al ingresar a la abse de datos coloca lo siguiente/n"
-echo "/nALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mutillidae';/n"
+echo -e "\n\nAl ingresar a la abse de datos coloca lo siguiente\n\n"
+echo -e"\n\nALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mutillidae';\n\n"
+
+sudo mysql -u root
+
+echo -e"\n\n Verifica el password de la base de datos ingresando: mutillidae \n\n"
+
+sleep 10
+
+sudo mysql -u root -p
 
 cd /var/www/html
 

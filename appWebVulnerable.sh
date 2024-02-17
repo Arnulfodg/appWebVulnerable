@@ -1,6 +1,6 @@
 #! /bin/bash
 
-#sudo apt install figlet -y
+sudo apt install figlet -y
 
 figlet MIDESMIS
 

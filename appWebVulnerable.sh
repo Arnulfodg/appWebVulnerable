@@ -1,11 +1,44 @@
 #! /bin/bash
 
-sudo apt install figlet -y
+yellowColour="\e[0;33m\033[1m"
+redColour="\e[0;31m\033[1m"
+endColour="\033[0m\e[0m"
 
-figlet MIDESMIS
+echo "
+ __  __ ___ ____  _____ ____  __  __ ___ ____  
+|  \/  |_ _|  _ \| ____/ ___||  \/  |_ _/ ___| 
+| |\/| || || | | |  _| \___ \| |\/| || |\___ \ 
+| |  | || || |_| | |___ ___) | |  | || | ___) |
+|_|  |_|___|____/|_____|____/|_|  |_|___|____/ 
+                 
+"
+echo -e "\n\n"     
+echo "
+ __  __ _   _ _____ ___ _     _     ___ ____    _    _____ 
+|  \/  | | | |_   _|_ _| |   | |   |_ _|  _ \  / \  | ____|
+| |\/| | | | | | |  | || |   | |    | || | | |/ _ \ |  _|  
+| |  | | |_| | | |  | || |___| |___ | || |_| / ___ \| |___ 
+|_|  |_|\___/  |_| |___|_____|_____|___|____/_/   \_\_____|
+      "
+function panel(){
+echo -e "\n\tPanel de ayuda\n"
+echo -e "\tQué desea realizar?"
+echo -e "\t1) Instalar el laboratorio"
+echo -e "\t2) practicar"
+}
+      
+# ------ exit of program
+function salir(){
+echo -e "\n\n ${redColour}[!] saliendo del programa...\n${endColour}"
+sudo service apache2 stop
+sudo service mysql stop
+tput cnorm && exit 1
+sleep 3
+}
+# ------ end exit of program
 
-figlet mutillidae
-
+function install_web(){
+echo -e "\t\nIniciando instalación\n"
 sudo apt update -y
 
 sudo apt upgrade -y
@@ -24,12 +57,12 @@ sudo service mysql restart
 
 sudo service apache2 restart
 
-echo -e "\n\nAl ingresar a la abse de datos coloca lo siguiente\n\n"
-echo -e "\n\nALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mutillidae';\n\n"
+echo -e "\n\nAl ingresar a la base de datos coloca lo siguiente\n\n"
+echo -e "\n\n${yellowColour}ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mutillidae';${endcolour}\n\n"
 
 sudo mysql -u root
 
-echo -e "\n\n Verifica el password de la base de datos ingresando: mutillidae \n\n"
+echo -e "\n\n{yellowColour}Verifica el password de la base de datos ingresando: ${redColour}\'mutillidae\'${endcolour}${endcolour}\n\n"
 
 sleep 10
 
@@ -43,6 +76,34 @@ sudo apt install git -y
 
 sudo git clone http://github.com/webpwnized/mutillidae.git
 
-echo -e 'Al abrir la web presiona en: \"click here\" para que se actualice la base de datos y disfruta tu entorno de pruebas'
+echo -e "\nInstalación terminada\n"
+echo -e 'Al abrir la web por primera vez presiona en: ${yellowColour}\"click here\"${endcolour} para que se actualice la base de datos y disfruta tu entorno de pruebas'
+}
 
+function practice(){
+sudo service mysql start
+sudo service apache2 start
+sudo service mysql restart
+sudo service apache2 restart
+sleep 10
 firefox localhost/mutillidae/src
+}
+
+declare -i contador=0
+
+while getopts "123" argument; do
+	case $argument in
+	1) let contador+=1;;
+	2) let contador+=2;;
+	3) let contador+=3;;
+	4) ;;
+	esac
+done
+
+if [ $contador -eq 1 ]; then
+	install_web
+elif [ $contador -eq 2 ]; then
+	practice
+else
+	panel
+fi

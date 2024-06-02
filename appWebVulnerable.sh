@@ -57,12 +57,12 @@ sudo service mysql restart
 
 sudo service apache2 restart
 
-echo -e "\n\nAl ingresar a la base de datos coloca lo siguiente\n\n"
-echo -e "\n\n${yellowColour}ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mutillidae';${endcolour}\n\n"
+echo -e "\n\nAl ingresar a la base de datos coloca lo siguiente\n"
+echo -e "${yellowColour}ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mutillidae';${endcolour}\n"
 
 sudo mysql -u root
 
-echo -e "\n\n{yellowColour}Verifica el password de la base de datos ingresando: ${redColour}\'mutillidae\'${endcolour}${endcolour}\n\n"
+echo -e "\n\n{yellowColour}Verifica el password de la base de datos ingresando:${endcolour} ${redColour}\'mutillidae\'${endcolour}\n\n"
 
 sleep 10
 
@@ -77,7 +77,7 @@ sudo apt install git -y
 sudo git clone http://github.com/webpwnized/mutillidae.git
 
 echo -e "\nInstalación terminada\n"
-echo -e 'Al abrir la web por primera vez presiona en: ${yellowColour}\"click here\"${endcolour} para que se actualice la base de datos y disfruta tu entorno de pruebas'
+echo -e '\nAl abrir la web por primera vez presiona en: ${yellowColour}\"click here\"${endcolour} para que se actualice la base de datos y disfruta tu entorno de pruebas\n'
 }
 
 function practice(){

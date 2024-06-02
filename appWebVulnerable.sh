@@ -30,8 +30,6 @@ echo -e "\t2) practicar"
 # ------ exit of program
 function salir(){
 echo -e "\n\n ${redColour}[!] saliendo del programa...\n${endColour}"
-sudo service apache2 stop
-sudo service mysql stop
 tput cnorm && exit 1
 sleep 3
 }
@@ -83,10 +81,13 @@ echo -e '\nAl abrir la web por primera vez presiona en: ${yellowColour}\"click h
 function practice(){
 sudo service mysql start
 sudo service apache2 start
-sudo service mysql restart
-sudo service apache2 restart
 sleep 10
 firefox localhost/mutillidae/src
+}
+
+function stop(){
+sudo service apache2 stop
+sudo service mysql stop
 }
 
 declare -i contador=0
@@ -104,6 +105,8 @@ if [ $contador -eq 1 ]; then
 	install_web
 elif [ $contador -eq 2 ]; then
 	practice
+elif [ $contador -eq 2 ]; then
+	stop
 else
 	panel
 fi

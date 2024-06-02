@@ -25,6 +25,7 @@ echo -e "\n\tPanel de ayuda\n"
 echo -e "\tQué desea realizar?"
 echo -e "\t1) Instalar el laboratorio"
 echo -e "\t2) practicar"
+echo -e "\t2) detener servicios"
 }
       
 # ------ exit of program

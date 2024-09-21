@@ -61,7 +61,7 @@ echo -e "${yellowColour}ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_nati
 
 sudo mysql -u root
 
-echo -e "\n\n{yellowColour}Verifica el password de la base de datos ingresando:${endcolour} ${redColour}\'mutillidae\'${endcolour}\n\n"
+echo -e "\n\n${yellowColour}Verifica el password de la base de datos ingresando:${endcolour} ${redColour}\'mutillidae\'${endcolour}\n\n"
 
 sleep 10
 
